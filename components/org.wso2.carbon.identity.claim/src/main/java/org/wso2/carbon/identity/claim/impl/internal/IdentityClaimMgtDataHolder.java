@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.carbon.identity.claim.internal;
+package org.wso2.carbon.identity.claim.impl.internal;
 
+import org.wso2.carbon.identity.claim.ClaimResolvingService;
+import org.wso2.carbon.identity.claim.ProfileMgtService;
 import org.wso2.carbon.identity.claim.exception.IdentityClaimMgtDataHolderException;
-import org.wso2.carbon.identity.claim.service.ClaimResolvingService;
-import org.wso2.carbon.identity.claim.service.ProfileMgtService;
 
 /**
  * Carbon security data holder.

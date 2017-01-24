@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.carbon.identity.claim.service.impl;
+package org.wso2.carbon.identity.claim.impl;
 
+import org.wso2.carbon.identity.claim.ProfileMgtService;
 import org.wso2.carbon.identity.claim.exception.ProfileMgtServiceException;
 import org.wso2.carbon.identity.claim.exception.ProfileReaderException;
-import org.wso2.carbon.identity.claim.mapping.profile.ClaimConfigEntry;
-import org.wso2.carbon.identity.claim.mapping.profile.ProfileEntry;
-import org.wso2.carbon.identity.claim.mapping.profile.ProfileMappingReader;
-import org.wso2.carbon.identity.claim.service.ProfileMgtService;
+import org.wso2.carbon.identity.claim.impl.config.profile.ClaimConfigEntry;
+import org.wso2.carbon.identity.claim.impl.config.profile.ProfileEntry;
+import org.wso2.carbon.identity.claim.impl.config.profile.ProfileMappingReader;
 import org.wso2.carbon.kernel.utils.StringUtils;
 
 import java.util.ArrayList;

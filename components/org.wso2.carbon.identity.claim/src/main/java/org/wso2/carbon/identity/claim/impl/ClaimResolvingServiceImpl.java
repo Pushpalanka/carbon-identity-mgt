@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.carbon.identity.claim.service.impl;
+package org.wso2.carbon.identity.claim.impl;
 
+import org.wso2.carbon.identity.claim.ClaimResolvingService;
 import org.wso2.carbon.identity.claim.exception.ClaimMappingReaderException;
 import org.wso2.carbon.identity.claim.exception.ClaimResolvingServiceException;
-import org.wso2.carbon.identity.claim.mapping.claim.ClaimMappingEntry;
-import org.wso2.carbon.identity.claim.mapping.claim.ClaimMappingReader;
-import org.wso2.carbon.identity.claim.service.ClaimResolvingService;
+import org.wso2.carbon.identity.claim.impl.config.claim.ClaimMapping;
+import org.wso2.carbon.identity.claim.impl.config.claim.ClaimMappingReader;
 import org.wso2.carbon.kernel.utils.StringUtils;
 
 import java.util.Map;
@@ -33,9 +33,9 @@ public class ClaimResolvingServiceImpl implements ClaimResolvingService {
     //Map(dialectURI, Map(external claim URI: root claim URI))
     Map<String, Map<String, String>> claimMappings = null;
 
-    private Map<String, String> getMappings(ClaimMappingEntry claimMappingEntry) {
-        return claimMappingEntry.getMappings().entrySet().stream().collect(Collectors
-                .toMap(p -> appendDialect(claimMappingEntry.getMappingDialectURI(), p.getKey()), Map.Entry::getValue));
+    private Map<String, String> getMappings(ClaimMapping claimMapping) {
+        return claimMapping.getMappings().entrySet().stream().collect(Collectors
+                .toMap(p -> appendDialect(claimMapping.getMappingDialectURI(), p.getKey()), Map.Entry::getValue));
 
     }
 
@@ -52,7 +52,7 @@ public class ClaimResolvingServiceImpl implements ClaimResolvingService {
 
     private Map<String, Map<String, String>> buildClaimMappings() throws ClaimMappingReaderException {
         if (claimMappings == null) {
-            Set<Map.Entry<String, ClaimMappingEntry>> claimEntrySet = ClaimMappingReader.getClaimMappings().entrySet();
+            Set<Map.Entry<String, ClaimMapping>> claimEntrySet = ClaimMappingReader.getClaimMappings().entrySet();
             Map<String, Map<String, String>> initialMappings = claimEntrySet.stream()
                     .collect(Collectors.toMap(Map.Entry::getKey, entry -> getMappings(entry.getValue())));
             claimMappings = claimEntrySet.stream().collect(Collectors
@@ -63,12 +63,12 @@ public class ClaimResolvingServiceImpl implements ClaimResolvingService {
     }
 
     private Map<String, String> resolveInheritingDialects(Map<String, Map<String, String>> initialMappings,
-            ClaimMappingEntry claimMappingEntry) {
+            ClaimMapping claimMapping) {
 
-        Map<String, String> ownClaims = initialMappings.get(claimMappingEntry.getMappingDialectURI());
+        Map<String, String> ownClaims = initialMappings.get(claimMapping.getMappingDialectURI());
 
-        if (!StringUtils.isNullOrEmptyAfterTrim(claimMappingEntry.getInherits())) {
-            Map<String, String> inheritingMap = initialMappings.get(claimMappingEntry.getInherits());
+        if (!StringUtils.isNullOrEmptyAfterTrim(claimMapping.getInherits())) {
+            Map<String, String> inheritingMap = initialMappings.get(claimMapping.getInherits());
             ownClaims.putAll(inheritingMap);
             return ownClaims;
         } else {

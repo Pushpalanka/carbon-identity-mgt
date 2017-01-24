@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.carbon.identity.claim.mapping.claim;
+package org.wso2.carbon.identity.claim.impl.config.claim;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,9 +25,9 @@ import java.util.List;
 public class ClaimMappingFile {
 
     //List<Entry>
-    private List<ClaimMappingEntry> claimMappings;
+    private List<ClaimMapping> claimMappings;
 
-    public List<ClaimMappingEntry> getClaimMapping() {
+    public List<ClaimMapping> getClaimMapping() {
 
         if (claimMappings == null) {
             return Collections.emptyList();
@@ -35,7 +35,7 @@ public class ClaimMappingFile {
         return claimMappings;
     }
 
-    public void setClaimMappings(List<ClaimMappingEntry> claims) {
+    public void setClaimMappings(List<ClaimMapping> claims) {
         this.claimMappings = claims;
     }
 

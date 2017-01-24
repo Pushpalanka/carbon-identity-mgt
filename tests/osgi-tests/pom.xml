@@ -381,4 +381,13 @@
         </profile>
     </profiles>
 
+    <properties>
+        <import.package>
+            org.wso2.carbon.kernel.*;version="${carbon.kernel.version}",
+            org.wso2.carbon.identity.claim.exception.*;version="${carbon.identity.mgt.version}",
+            org.wso2.carbon.identity.mgt.impl.util.*;version="${carbon.identity.mgt.version}",
+            org.wso2.carbon.identity.mgt.resolver.user.*;version="${carbon.identity.mgt.version}"
+        </import.package>
+    </properties>
+
 </project>

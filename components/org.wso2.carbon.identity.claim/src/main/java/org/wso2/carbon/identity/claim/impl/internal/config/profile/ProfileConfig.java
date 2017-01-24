@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.carbon.identity.claim.mapping.profile;
+package org.wso2.carbon.identity.claim.impl.internal.config.profile;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,12 +22,12 @@ import java.util.List;
 /**
  * Claim Mapping Entry.
  */
-public class ProfileEntry {
+public class ProfileConfig {
 
     private String profileName;
     private boolean isAdminProfile;
 
-    private List<ClaimConfigEntry> claims;
+    private List<ClaimConfig> claims;
 
     public String getProfileName() {
         return profileName;
@@ -37,7 +37,7 @@ public class ProfileEntry {
         this.profileName = profileName;
     }
 
-    public List<ClaimConfigEntry> getClaims() {
+    public List<ClaimConfig> getClaims() {
         if (claims == null) {
             return Collections.emptyList();
         } else {
@@ -45,7 +45,7 @@ public class ProfileEntry {
         }
     }
 
-    public void setClaims(List<ClaimConfigEntry> claims) {
+    public void setClaims(List<ClaimConfig> claims) {
         this.claims = claims;
     }
 

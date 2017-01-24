@@ -10,9 +10,9 @@ import org.osgi.framework.BundleContext;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.wso2.carbon.identity.claim.ProfileMgtService;
 import org.wso2.carbon.identity.claim.exception.ProfileMgtServiceException;
-import org.wso2.carbon.identity.claim.mapping.profile.ClaimConfigEntry;
-import org.wso2.carbon.identity.claim.service.ProfileMgtService;
+import org.wso2.carbon.identity.claim.impl.config.profile.ClaimConfigEntry;
 import org.wso2.carbon.identity.mgt.test.osgi.util.IdentityMgtOSGiTestUtils;
 import org.wso2.carbon.kernel.utils.CarbonServerInfo;
 
@@ -30,14 +30,13 @@ import javax.inject.Inject;
  */
 @Listeners(PaxExam.class)
 @ExamReactorStrategy(PerSuite.class)
-    public class ProfileMgtServiceTest {
-
-    private List<ClaimConfigEntry> claimConfigEntriesRegistration = new ArrayList<>();
-    private ClaimConfigEntry claimConfigEntryUserName = new ClaimConfigEntry();
-    private ClaimConfigEntry claimConfigEntryEmployeeNumber = new ClaimConfigEntry();
+public class ProfileMgtServiceTest {
 
     private static final String DEFAULT = "default";
     private static final String EMPLOYEE = "employee";
+    private List<ClaimConfigEntry> claimConfigEntriesRegistration = new ArrayList<>();
+    private ClaimConfigEntry claimConfigEntryUserName = new ClaimConfigEntry();
+    private ClaimConfigEntry claimConfigEntryEmployeeNumber = new ClaimConfigEntry();
 
     //    profileName: "default"
     //    claims:
@@ -72,7 +71,6 @@ import javax.inject.Inject;
     //    required: true
     //    readonly: true
     //    regex: "*"
-
     @Inject
     private BundleContext bundleContext;
 
@@ -105,7 +103,7 @@ import javax.inject.Inject;
         Assert.assertEquals(DEFAULT, profileMgtService.getProfile(DEFAULT).getProfileName(),
                 "Registration profile mappings not read correctly.");
         Assert.assertEquals(false, profileMgtService.getProfile(DEFAULT).isAdminProfile(),
-                            "Default profile is not an admin profile");
+                "Default profile is not an admin profile");
         Assert.assertNotNull(profileMgtService.getProfiles().get(EMPLOYEE).getClaims(),
                 "Claims are not read correctly from profile");
 

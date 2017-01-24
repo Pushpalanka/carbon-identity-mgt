@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.carbon.identity.claim.mapping.claim;
+package org.wso2.carbon.identity.claim.impl.config.claim;
 
 import java.util.Collections;
 import java.util.Map;
@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * Claim Mapping Entry.
  */
-public class ClaimMappingEntry {
+public class ClaimMapping {
 
     private String dialectURI;
     private String inherits;

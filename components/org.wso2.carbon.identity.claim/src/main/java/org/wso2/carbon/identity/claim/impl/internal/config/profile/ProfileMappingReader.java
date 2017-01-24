@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.carbon.identity.claim.mapping.profile;
+package org.wso2.carbon.identity.claim.impl.internal.config.profile;
 
 import org.wso2.carbon.identity.claim.exception.ProfileReaderException;
-import org.wso2.carbon.identity.claim.util.ProfileMgtConstants;
+import org.wso2.carbon.identity.claim.impl.util.ProfileMgtConstants;
 import org.wso2.carbon.identity.mgt.exception.CarbonIdentityMgtConfigException;
 import org.wso2.carbon.identity.mgt.impl.util.FileUtil;
 import org.wso2.carbon.identity.mgt.impl.util.IdentityMgtConstants;
@@ -57,10 +57,10 @@ public class ProfileMappingReader {
      *
      * @return Map(profileName : claim configurations)
      */
-    public static Map<String, ProfileEntry> getProfileMappings() throws ProfileReaderException {
+    public static Map<String, ProfileConfig> getProfileMappings() throws ProfileReaderException {
         ProfileMappingFile profileMappingFile = buildProfileMappings();
-        List<ProfileEntry> profileEntryList = profileMappingFile.getProfileClaimMapping();
-        return profileEntryList.stream().filter(Objects::nonNull)
+        List<ProfileConfig> profileConfigList = profileMappingFile.getProfileClaimMapping();
+        return profileConfigList.stream().filter(Objects::nonNull)
                 .filter(profileEntry -> !profileEntry.getClaims().isEmpty())
                 .collect(Collectors.toMap(profileEntry -> profileEntry.getProfileName(), profileEntry -> profileEntry));
 

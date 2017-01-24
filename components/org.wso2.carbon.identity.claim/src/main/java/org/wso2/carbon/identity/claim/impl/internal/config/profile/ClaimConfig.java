@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.carbon.identity.claim.mapping.profile;
+package org.wso2.carbon.identity.claim.impl.internal.config.profile;
 
 import java.util.Collections;
 import java.util.Map;
@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * Configuration of a profile
  */
-public class ClaimConfigEntry {
+public class ClaimConfig {
     private String claimURI;
     private String displayName;
     private Boolean required;

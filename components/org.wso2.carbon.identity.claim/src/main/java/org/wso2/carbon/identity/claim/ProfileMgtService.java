@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.carbon.identity.claim.service;
+package org.wso2.carbon.identity.claim;
 
 import org.wso2.carbon.identity.claim.exception.ProfileMgtServiceException;
-import org.wso2.carbon.identity.claim.mapping.profile.ClaimConfigEntry;
-import org.wso2.carbon.identity.claim.mapping.profile.ProfileEntry;
+import org.wso2.carbon.identity.claim.impl.config.profile.ClaimConfigEntry;
+import org.wso2.carbon.identity.claim.impl.config.profile.ProfileEntry;
 
 import java.util.List;
 import java.util.Map;
@@ -49,7 +49,7 @@ public interface ProfileMgtService {
      * Get the claims set of a profile.
      *
      * @param profileName : Uniquely identifying name of the profile.
-     * @return ProfileEntry with the set of claims and their properties.
+     * @return ProfileConfig with the set of claims and their properties.
      * @throws ProfileMgtServiceException : Error in getting the profile.
      */
     ProfileEntry getProfile(String profileName) throws ProfileMgtServiceException;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.carbon.identity.claim.internal;
+package org.wso2.carbon.identity.claim.impl.internal;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
@@ -23,10 +23,10 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.wso2.carbon.identity.claim.service.ClaimResolvingService;
-import org.wso2.carbon.identity.claim.service.ProfileMgtService;
-import org.wso2.carbon.identity.claim.service.impl.ClaimResolvingServiceImpl;
-import org.wso2.carbon.identity.claim.service.impl.ProfileMgtServiceImpl;
+import org.wso2.carbon.identity.claim.ClaimResolvingService;
+import org.wso2.carbon.identity.claim.ProfileMgtService;
+import org.wso2.carbon.identity.claim.impl.ClaimResolvingServiceImpl;
+import org.wso2.carbon.identity.claim.impl.ProfileMgtServiceImpl;
 import org.wso2.carbon.kernel.startupresolver.RequiredCapabilityListener;
 
 /**

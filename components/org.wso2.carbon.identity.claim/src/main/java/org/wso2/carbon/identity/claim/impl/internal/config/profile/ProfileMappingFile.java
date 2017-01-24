@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.carbon.identity.claim.mapping.profile;
+package org.wso2.carbon.identity.claim.impl.internal.config.profile;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,14 +25,14 @@ import java.util.List;
 public class ProfileMappingFile {
 
     //List<Entry>
-    private List<ProfileEntry> profiles;
+    private List<ProfileConfig> profiles;
 
     /**
      * Get the profiles with their mapped claims.
      *
      * @return : A list of entries with a set of claims mapped to a profile.
      */
-    public List<ProfileEntry> getProfileClaimMapping() {
+    public List<ProfileConfig> getProfileClaimMapping() {
 
         if (profiles == null) {
             return Collections.emptyList();
@@ -45,7 +45,7 @@ public class ProfileMappingFile {
      *
      * @param profiles : List of profiles with claims mapped to each profile.
      */
-    public void setProfileClaimMappings(List<ProfileEntry> profiles) {
+    public void setProfileClaimMappings(List<ProfileConfig> profiles) {
         this.profiles = profiles;
     }
 

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.carbon.identity.claim.mapping.claim;
+package org.wso2.carbon.identity.claim.impl.internal.config.claim;
 
 import org.wso2.carbon.identity.claim.exception.ClaimMappingReaderException;
-import org.wso2.carbon.identity.claim.util.ClaimMgtConstants;
+import org.wso2.carbon.identity.claim.impl.util.ClaimMgtConstants;
 import org.wso2.carbon.identity.mgt.exception.CarbonIdentityMgtConfigException;
 import org.wso2.carbon.identity.mgt.impl.util.FileUtil;
 import org.wso2.carbon.identity.mgt.impl.util.IdentityMgtConstants;
@@ -57,10 +57,10 @@ public class ClaimMappingReader {
      *
      * @return Map(application claim : root claim URI)
      */
-    public static Map<String, ClaimMappingEntry> getClaimMappings() throws ClaimMappingReaderException {
+    public static Map<String, ClaimMapping> getClaimMappings() throws ClaimMappingReaderException {
         ClaimMappingFile claimMappingFile = buildClaimMappings();
-        List<ClaimMappingEntry> claimMappingEntryList = claimMappingFile.getClaimMapping();
-        return claimMappingEntryList.stream().filter(Objects::nonNull)
+        List<ClaimMapping> claimMappingList = claimMappingFile.getClaimMapping();
+        return claimMappingList.stream().filter(Objects::nonNull)
                 .filter(claimMappingEntry -> !claimMappingEntry.getMappings().isEmpty()).collect(Collectors
                         .toMap(claimMappingEntry -> claimMappingEntry.getMappingDialectURI(),
                                 claimMappingEntry -> claimMappingEntry));

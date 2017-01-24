@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.carbon.identity.claim.service;
+package org.wso2.carbon.identity.claim;
 
 import org.wso2.carbon.identity.claim.exception.ClaimResolvingServiceException;
 
